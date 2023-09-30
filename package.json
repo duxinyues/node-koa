@@ -1,0 +1,19 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:duxinyues/node-koa.git",
+  "author": "duxinyues",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "koa": "^2.14.2",
+    "koa-bodyparser": "^4.4.1",
+    "koa-cors": "^0.0.16",
+    "koa-logger": "^3.2.1",
+    "koa-onerror": "^4.2.0",
+    "koa-router": "^12.0.0",
+    "koa-static": "^5.0.0",
+    "nodemon": "^3.0.1"
+  }
+}
