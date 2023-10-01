@@ -5,6 +5,10 @@
   "repository": "git@github.com:duxinyues/node-koa.git",
   "author": "duxinyues",
   "license": "MIT",
+  "scripts": {
+    "start": "node bin/www.js",
+    "dev": "nodemon bin/www.js"
+  },
   "dependencies": {
     "debug": "^4.3.4",
     "koa": "^2.14.2",

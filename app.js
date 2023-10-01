@@ -17,23 +17,31 @@ onerror(app);
 app.use(bodyparser());
 
 app.use(logger());
-app.use(static(path.join(__dirname,staticPath)));
-
+app.use(static(path.join(__dirname, staticPath)));
 
 
 const router = new Router();
 router.get('/api/get/userInfo', async (context) => {
-    context.body = '获取用户信息的接口'
+    const {id} = context.request.query;
+    context.body = `接口参数为：${id}`
 });
-
-app.use(router.routes()).use(async (context) => {
+router.post('/api/update/userInfo', async (ctx) => {
+    console.log(ctx.request);
+    const {id} = ctx.request.body;
+    ctx.body = `请求参数为：${id}`
+})
+/**
+ * 注册路由
+ */
+app.use(router.routes(), router.allowedMethods()).use(async (context) => {
     context.body = "没有匹配的接口"
 })
 
+app.use(async (context, next) => {
+    const start = new Date();
+    await next();
+    const ms = new Date() - start;
+    console.log(`${context.method} ${context.url} - ${ms}ms`)
+})
 
-app.listen(3000, () => {
-    console.log('服务正在启动，端口号为：3000');
-});
-
-
-
+module.exports = app;
